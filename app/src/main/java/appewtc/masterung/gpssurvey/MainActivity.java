@@ -32,7 +32,7 @@ import com.google.android.gms.maps.model.PolygonOptions;
 public class MainActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    private TextView latLocalTextView, lngLocalTextView;
+    private TextView latLocalTextView, lngLocalTextView, areaTextView;
     private LocationManager objLocationManager;
     private Criteria objCriteria;
     private boolean GPSABoolean, networkABoolean;
@@ -154,6 +154,11 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
 
         }   //for
+
+        //Show Area
+        String strArea = String.format("%.4f", Area) + " Sq.Km";
+        areaTextView.setText(strArea);
+
 
 
     } // clickFinish
@@ -358,6 +363,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
     private void bindWidget() {
         latLocalTextView = (TextView) findViewById(R.id.textView3);
         lngLocalTextView = (TextView) findViewById(R.id.textView5);
+        areaTextView = (TextView) findViewById(R.id.textView7);
     }
 
 
