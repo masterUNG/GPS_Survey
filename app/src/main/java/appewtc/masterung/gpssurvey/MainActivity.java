@@ -133,7 +133,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         for (int i = 0; i < intTriangle; i++) {
 
-            intIndex = intIndex + i;
+            intIndex = intIndex + 1;
 
             distance1 = distance(latDoubles[0], lngDoubles[0],
                     latDoubles[intIndex], lngDoubles[intIndex]);
@@ -146,7 +146,11 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
             Area = Area + triangleArea(distance1, distance2, distance3);
 
-            Log.d(tag, "Area รอบที่ " + i + " ==> " + Area);
+            Log.d(tag, "distance1 ==> " + distance1);
+            Log.d(tag, "distance2 ==> " + distance2);
+            Log.d(tag, "distance3 ==> " + distance3);
+
+            Log.d(tag, "Area รอบที่ " + i + " ==> " + triangleArea(distance1, distance2, distance3));
 
 
         }   //for
