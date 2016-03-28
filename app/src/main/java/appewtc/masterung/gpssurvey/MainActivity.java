@@ -126,6 +126,11 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         Log.d(tag, "จำนวนเหลี่ยม = " + intPoint);
         Log.d(tag, "สามเหลี่ยมที่สร้างได้ = " + intTriangle);
 
+
+
+
+
+
         double distance1 = distance(latDoubles[0], lngDoubles[0], latDoubles[1], lngDoubles[1]);
         double distance2 = distance(latDoubles[1], lngDoubles[1], latDoubles[2], lngDoubles[2]);
         double distance3 = distance(latDoubles[0], lngDoubles[0], latDoubles[2], lngDoubles[2]);
