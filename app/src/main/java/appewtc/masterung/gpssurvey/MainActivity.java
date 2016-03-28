@@ -97,7 +97,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
             PolygonOptions myPolygonOptions = new PolygonOptions();
 
             //Get Value From SQLite
-            for (int i=0; i < intPoint; i++) {
+            for (int i = 0; i < intPoint; i++) {
                 latDoubles[i] = Double.parseDouble(objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_lat)));
                 lngDoubles[i] = Double.parseDouble(objCursor.getString(objCursor.getColumnIndex(ManageTABLE.COLUMN_lng)));
                 pointLatLngs[i] = new LatLng(latDoubles[i], lngDoubles[i]);
@@ -126,20 +126,30 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         Log.d(tag, "จำนวนเหลี่ยม = " + intPoint);
         Log.d(tag, "สามเหลี่ยมที่สร้างได้ = " + intTriangle);
 
+        //Calculate Area สามเหลี่ยม ย่อย
+        double[] subTriangleDoubles = new double[intTriangle];
+        double distance1, distance2, distance3, Area = 0;
+        int intIndex = 0;
+
+        for (int i = 0; i < intTriangle; i++) {
+
+            intIndex = intIndex + i;
+
+            distance1 = distance(latDoubles[0], lngDoubles[0],
+                    latDoubles[intIndex], lngDoubles[intIndex]);
+
+            distance2 = distance(latDoubles[intIndex], lngDoubles[intIndex],
+                    latDoubles[intIndex + 1], lngDoubles[intIndex + 1]);
+
+            distance3 = distance(latDoubles[intIndex + 1], lngDoubles[intIndex + 1],
+                    latDoubles[0], lngDoubles[0]);
+
+            Area = Area + triangleArea(distance1, distance2, distance3);
+
+            Log.d(tag, "Area รอบที่ " + i + " ==> " + Area);
 
 
-
-
-
-        double distance1 = distance(latDoubles[0], lngDoubles[0], latDoubles[1], lngDoubles[1]);
-        double distance2 = distance(latDoubles[1], lngDoubles[1], latDoubles[2], lngDoubles[2]);
-        double distance3 = distance(latDoubles[0], lngDoubles[0], latDoubles[2], lngDoubles[2]);
-
-        //Calculate Triangle
-        double area = triangleArea(distance1, distance2, distance3);
-
-        //Test Distance
-        Log.d("28March", "point 1-2 ==> " + distance1);
+        }   //for
 
 
     } // clickFinish
@@ -150,7 +160,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         double S = (douDis1 + douDis2 + douDis3) / 2;
 
-        douArea = Math.sqrt(S*(S-douDis1)*(S-douDis2)*(S-douDis3));
+        douArea = Math.sqrt(S * (S - douDis1) * (S - douDis2) * (S - douDis3));
 
         return douArea;
     }
@@ -161,7 +171,7 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
         double dist = Math.sin(deg2rad(lat1)) * Math.sin(deg2rad(lat2)) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.cos(deg2rad(theta));
         dist = Math.acos(dist);
         dist = rad2deg(dist);
-        dist = dist * 60 * 1.1515* 1.609344;
+        dist = dist * 60 * 1.1515 * 1.609344;
 
 
         return (dist);
@@ -236,8 +246,6 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
         latLocalTextView.setText(strLat);
         lngLocalTextView.setText(strLng);
-
-
 
 
     }   // afterResume
