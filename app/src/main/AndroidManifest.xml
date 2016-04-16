@@ -42,7 +42,10 @@
             android:label="@string/title_activity_main" />
         <activity android:name=".FormActivity" />
         <activity android:name=".SaveData" />
-        <activity android:name=".ShowHistory"></activity>
+        <activity android:name=".ShowHistory" />
+        <activity
+            android:name=".ShowDetail"
+            android:label="@string/title_activity_show_detail"></activity>
     </application>
 
 </manifest>
