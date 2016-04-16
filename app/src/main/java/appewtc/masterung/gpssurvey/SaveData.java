@@ -62,7 +62,7 @@ public class SaveData extends AppCompatActivity {
 
 
 
-        SaveAdapter saveAdapter = new SaveAdapter(SaveData.this, pointStrings, latStrings, lngStrings);
+        SaveAdapter saveAdapter = new SaveAdapter(this, pointStrings, latStrings, lngStrings);
         listView.setAdapter(saveAdapter);
 
     }   // createListView
