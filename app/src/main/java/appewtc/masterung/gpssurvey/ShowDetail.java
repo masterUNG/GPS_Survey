@@ -1,5 +1,8 @@
 package appewtc.masterung.gpssurvey;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.widget.TextView;
@@ -9,12 +12,14 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolygonOptions;
 
 public class ShowDetail extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private TextView nameTextView, dateTextView, areaTextView;
+    private LatLng[] pointLatLngs;
+    private String strName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +37,30 @@ public class ShowDetail extends FragmentActivity implements OnMapReadyCallback {
         //Show View
         showView();
 
+        //Create Marker
+        createMarker();
+
     }   // Main Method
+
+    private void createMarker() {
+
+        SQLiteDatabase sqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
+                MODE_PRIVATE, null);
+        Cursor cursor = sqLiteDatabase
+                .rawQuery("SELECT * FROM surveyTABLE WHERE Name = " + "'" + strName + "'", null);
+        cursor.moveToFirst();
+        pointLatLngs = new LatLng[cursor.getCount()];
+
+        for (int i=0;i<cursor.getCount();i++) {
+
+            pointLatLngs[i] = new LatLng(Double.parseDouble(cursor.getString(4)),
+                    Double.parseDouble(cursor.getString(5)));
+            cursor.moveToNext();
+
+        }   // for
+        cursor.close();
+
+    }   // createMarker
 
     private void bindWidget() {
         nameTextView = (TextView) findViewById(R.id.textView18);
@@ -42,7 +70,7 @@ public class ShowDetail extends FragmentActivity implements OnMapReadyCallback {
 
     private void showView() {
 
-        String strName = getIntent().getStringExtra("Name");
+        strName = getIntent().getStringExtra("Name");
         String strDate = getIntent().getStringExtra("Date");
         String strArea = getIntent().getStringExtra("Area");
 
@@ -56,10 +84,18 @@ public class ShowDetail extends FragmentActivity implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(pointLatLngs[0], 16));
+
+        PolygonOptions polygonOptions = new PolygonOptions()
+                .strokeWidth(10)
+                .strokeColor(Color.RED)
+                .fillColor(Color.argb(50, 148, 194, 72));
+
+        for (int i=0;i<pointLatLngs.length;i++) {
+            polygonOptions.add(pointLatLngs[i]);
+        }   // for
+        mMap.addPolygon(polygonOptions);
+
     }   // onMap
 
 }   // Main Class
