@@ -76,7 +76,7 @@ public class ShowDetail extends FragmentActivity implements OnMapReadyCallback {
 
         nameTextView.setText(strName);
         dateTextView.setText(strDate);
-        areaTextView.setText(strArea);
+        areaTextView.setText("Area = " + strArea);
     }   // showView
 
 

@@ -68,6 +68,10 @@ public class MainActivity extends FragmentActivity implements OnMapReadyCallback
 
     }   // Main Method
 
+    public void clickList(View view) {
+        startActivity(new Intent(MainActivity.this, ShowHistory.class));
+    }
+
     public void clickSaveMain(View view) {
 
         SQLiteDatabase sqLiteDatabase = openOrCreateDatabase(MyOpenHelper.DATABASE_NAME,
