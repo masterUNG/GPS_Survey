@@ -28,8 +28,9 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="20dp">
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="1">
 
             <fragment
                 android:id="@+id/map2"
@@ -37,6 +38,109 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 tools:context="appewtc.masterung.gpssurvey.MainActivity" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_margin="20dp"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:id="@+id/textView21"
+                        android:textSize="@dimen/h2"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:id="@+id/textView22"
+                        android:textSize="@dimen/h2"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:id="@+id/textView23"
+                        android:textSize="@dimen/h2"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Area"
+                        android:id="@+id/textView24"
+                        android:textSize="@dimen/h2"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Date"
+                        android:id="@+id/textView25"
+                        android:textSize="@dimen/h2"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:id="@+id/textView26"
+                        android:textSize="@dimen/h2"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Address"
+                        android:id="@+id/textView27"
+                        android:textSize="@dimen/h2"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Area"
+                        android:id="@+id/textView28"
+                        android:textSize="@dimen/h2"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
