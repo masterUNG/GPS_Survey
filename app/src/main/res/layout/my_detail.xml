@@ -8,22 +8,7 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center_horizontal"
-        android:layout_above="@+id/textView20">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView18"
-            android:textSize="@dimen/h1" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="New Text"
-            android:id="@+id/textView19"
-            android:textSize="@dimen/h2" />
+        android:gravity="center_horizontal">
 
         <LinearLayout
             android:orientation="vertical"
@@ -54,9 +39,17 @@
                 android:layout_height="wrap_content">
 
                 <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+
+                <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp">
 
                     <TextView
                         android:layout_width="0dp"
@@ -100,6 +93,12 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000" />
+
+                <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" >
@@ -108,7 +107,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Date"
-                        android:id="@+id/textView25"
+                        android:id="@+id/textView19"
                         android:textSize="@dimen/h2"
                         android:layout_weight="1"
                         android:gravity="center_horizontal" />
@@ -117,7 +116,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Name"
-                        android:id="@+id/textView26"
+                        android:id="@+id/textView18"
                         android:textSize="@dimen/h2"
                         android:layout_weight="1"
                         android:gravity="center_horizontal" />
@@ -135,22 +134,20 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:text="Area"
-                        android:id="@+id/textView28"
+                        android:id="@+id/textView20"
                         android:textSize="@dimen/h2"
                         android:layout_weight="1"
                         android:gravity="center_horizontal" />
                 </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="#000000"></LinearLayout>
             </LinearLayout>
         </LinearLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="New Text"
-        android:id="@+id/textView20"
-        android:textSize="@dimen/h1"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true" />
 </RelativeLayout>
